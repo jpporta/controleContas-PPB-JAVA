@@ -23,5 +23,17 @@ public class ContaEspecial extends Conta{
     public void setLimite(float limite) {
         this.limite = limite;
     }
+
+    @Override
+    public void sacarDinheiro(float valor) {
+        if((this.getSaldo() - valor) > (-1)*this.getLimite()){
+            super.sacarDinheiro(valor);
+        }
+        else{
+            System.out.println("ERRO.\nLimite atingido.\n");
+        }
+    }
+    
+    
     
 }

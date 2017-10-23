@@ -1,6 +1,6 @@
 package controledecontas;
 
-public class Conta {
+public abstract class Conta {
    private int numeroConta; 
    private String nomeUsuario;
    private float saldo;
@@ -19,7 +19,7 @@ public class Conta {
     
    // Metodos
     public String printaVariaveis() {
-        return "Conta{" + "numeroConta=" + numeroConta + ", nomeUsuario=" + nomeUsuario + ", saldo=" + saldo  + '}';
+        return "Numero = " + numeroConta + "\nNome = " + nomeUsuario + "\nSaldo = " + saldo  + "\n";
     }
 
     // Getts and Setters
@@ -45,6 +45,18 @@ public class Conta {
 
     public void setSaldo(float saldo) {
         this.saldo = saldo;
+    }
+    
+    public void sacarDinheiro(float valor){
+
+        this.setSaldo(this.getSaldo() - valor);
+    
+    }
+
+    void depositarDinheiro(float valor) {
+        
+        this.setSaldo(this.getSaldo() + valor);
+    
     }
 
 }

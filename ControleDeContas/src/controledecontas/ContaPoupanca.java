@@ -24,4 +24,10 @@ public class ContaPoupanca extends Conta{
         this.taxaRendimento = taxaRendimento;
     }
     
+    public void atualizar(){
+        
+        this.setSaldo(this.getSaldo() * (1 + (this.getTaxaRendimento()/100)));
+        
+    }
+    
 }
