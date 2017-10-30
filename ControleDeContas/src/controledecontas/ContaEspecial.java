@@ -25,14 +25,15 @@ public class ContaEspecial extends Conta{
     }
 
     @Override
-    public void sacarDinheiro(float valor) {
-        if((this.getSaldo() - valor) > (-1)*this.getLimite()){
-            super.sacarDinheiro(valor);
-        }
-        else{
-            System.out.println("ERRO.\nLimite atingido.\n");
+    public void sacarDinheiro(float valor) throws ExceptionNumeroNegativo {
+        if(this.getSaldo() + this.getLimite() - valor < 0){
+            throw new ExceptionNumeroNegativo("Valor ultrapassa o limite.");
+        } else {
+            this.setSaldo(this.getSaldo() - valor);
         }
     }
+
+
     
     
     

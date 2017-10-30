@@ -10,19 +10,5 @@ public class ContaSimples extends Conta{
         super(numConta);
     }
 
-    @Override
-    public void sacarDinheiro(float valor) {
-        
-        if(valor <= this.getSaldo()){
-            
-        super.sacarDinheiro(valor);
-        
-        }
-        else{
-            
-            System.out.println("Impossível realizar o saque. Valor insuficiente.");
-            
-        }
-    }
     
 }

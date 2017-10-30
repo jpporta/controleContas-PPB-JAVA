@@ -47,9 +47,12 @@ public abstract class Conta {
         this.saldo = saldo;
     }
     
-    public void sacarDinheiro(float valor){
-
-        this.setSaldo(this.getSaldo() - valor);
+    public void sacarDinheiro(float valor) throws ExceptionNumeroNegativo{
+        if(this.getSaldo() - valor < 0){
+            throw new ExceptionNumeroNegativo("Valor passa do limite.");
+        } else{
+             this.setSaldo(this.getSaldo() - valor);
+        }
     
     }
 

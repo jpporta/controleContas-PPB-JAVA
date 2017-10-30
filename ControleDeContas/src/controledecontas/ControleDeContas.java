@@ -170,7 +170,7 @@ public class ControleDeContas {
         return numConta;
     }
 
-    private static void sacarDineiro(Conta[] contasCadastradas) {
+    private static void sacarDineiro(Conta[] contasCadastradas){
         Scanner input = new Scanner( System.in ); 
         System.out.println("Por favor, insira o numero da contar que quer sacar:");
         int numConta = input.nextInt();
@@ -180,7 +180,11 @@ public class ControleDeContas {
         else{
             System.out.println("Valor do saque:");
             float valor = input.nextFloat();
-            contasCadastradas[indexConta(contasCadastradas, numConta)].sacarDinheiro(valor);
+            try{
+                contasCadastradas[indexConta(contasCadastradas, numConta)].sacarDinheiro(valor);
+            } catch(ExceptionNumeroNegativo e){
+                System.out.println(e.getMessage());
+            }
             
             System.out.println("Saldo: " + contasCadastradas[indexConta(contasCadastradas, numConta)].getSaldo());
         }
