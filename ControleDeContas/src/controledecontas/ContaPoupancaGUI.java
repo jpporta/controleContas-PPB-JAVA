@@ -100,7 +100,8 @@ public class ContaPoupancaGUI extends JFrame {
     private class criarContaPoupancaHandler implements ActionListener {
 
         Banco datab = Banco.getInstance();
-
+        String criada;
+        
         @Override
         public void actionPerformed(ActionEvent entrada) {
 
@@ -114,7 +115,12 @@ public class ContaPoupancaGUI extends JFrame {
                         try{
                             incrementoConta = Float.parseFloat(entradaIncremento.getText());
                             
-                            datab.criarContaPoupanca(entradaNome.getText(), numeroConta, saldoConta, incrementoConta);
+                            criada = datab.criarContaPoupanca(entradaNome.getText(), numeroConta, saldoConta, incrementoConta);
+                            if(criada.equalsIgnoreCase("Conta criada com sucesso")){
+                                JOptionPane.showMessageDialog(null, criada, "SUCESSO" ,JOptionPane.INFORMATION_MESSAGE);
+                            } else{
+                                JOptionPane.showMessageDialog(null, criada, "Erro" ,JOptionPane.ERROR_MESSAGE);
+                            }
                             dispose();
                         }catch(NumberFormatException incrementoinvalido){
                             JOptionPane.showMessageDialog(null, "Rendimento inválida", "ERRO" , JOptionPane.ERROR_MESSAGE);

@@ -101,6 +101,7 @@ public class ContaEspecialGUI extends JFrame {
     private class criarContaEspecialHandler implements ActionListener {
 
         Banco datab = Banco.getInstance();
+        String criada;
 
         @Override
         public void actionPerformed(ActionEvent entrada) {
@@ -115,7 +116,12 @@ public class ContaEspecialGUI extends JFrame {
                         try{
                             limiteConta = Float.parseFloat(entradaLimite.getText());
                             
-                            datab.criarContaEspecial(entradaNome.getText(), numeroConta, saldoConta, limiteConta);
+                            criada = datab.criarContaEspecial(entradaNome.getText(), numeroConta, saldoConta, limiteConta);
+                            if(criada.equalsIgnoreCase("Conta criada com sucesso")){
+                                JOptionPane.showMessageDialog(null, criada, "SUCESSO" ,JOptionPane.INFORMATION_MESSAGE);
+                            } else{
+                                JOptionPane.showMessageDialog(null, criada, "Erro" ,JOptionPane.ERROR_MESSAGE);
+                            }
                             dispose();
                         }catch(NumberFormatException limiteinvalido){
                             JOptionPane.showMessageDialog(null, "Limite inválido", "ERRO" , JOptionPane.ERROR_MESSAGE);

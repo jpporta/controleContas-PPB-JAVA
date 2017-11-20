@@ -87,7 +87,8 @@ public class ContaSimplesGUI extends JFrame {
     private class criarContaSimplesHandler implements ActionListener {
 
         Banco datab = Banco.getInstance();
-
+        String criada;
+        
         @Override
         public void actionPerformed(ActionEvent entrada) {
 
@@ -98,7 +99,12 @@ public class ContaSimplesGUI extends JFrame {
                     numeroConta = Integer.parseInt(entradaNumero.getText());
                     try{
                         saldoConta = Float.parseFloat(entradaSaldo.getText());
-                        datab.criarContaSimples(entradaNome.getText(), numeroConta, saldoConta);
+                        criada = datab.criarContaSimples(entradaNome.getText(), numeroConta, saldoConta);
+                        if(criada.equals("Conta criada com sucesso")){
+                            JOptionPane.showMessageDialog(null, criada, "SUCESSO" ,JOptionPane.INFORMATION_MESSAGE);
+                        } else{
+                            JOptionPane.showMessageDialog(null, criada, "Erro" ,JOptionPane.ERROR_MESSAGE);
+                        }
                         dispose();
                     }catch(NumberFormatException saldoinvalido){
                         JOptionPane.showMessageDialog(null, "Saldo inválido", "ERRO" , JOptionPane.ERROR_MESSAGE);

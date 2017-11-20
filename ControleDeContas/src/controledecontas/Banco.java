@@ -20,21 +20,30 @@ public class Banco {
         return INSTANCE;
     }
 
-    public void criarContaSimples(String nome, int numero, float saldo) {
+    public String criarContaSimples(String nome, int numero, float saldo) {
         if (isNumAv(numero)) {
             contas.add(new ContaSimples(numero, nome, saldo));
+            return "Conta criada com sucesso";
+        } else {
+            return "Número já existente";
         }
     }
 
-    public void criarContaEspecial(String nome, int numero, float saldo, float limite) {
+    public String criarContaEspecial(String nome, int numero, float saldo, float limite) {
         if (isNumAv(numero)) {
             contas.add(new ContaEspecial(numero, nome, saldo, limite));
+            return "Conta criada com sucesso";
+        } else {
+            return "Número já existente";
         }
     }
 
-    public void criarContaPoupanca(String nome, int numero, float saldo, float tRend) {
+    public String criarContaPoupanca(String nome, int numero, float saldo, float tRend) {
         if (isNumAv(numero)) {
             contas.add(new ContaPoupanca(numero, nome, saldo, tRend));
+            return "Conta criada com sucesso";
+        } else {
+            return "Número já existente";
         }
     }
 
